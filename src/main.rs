@@ -1,14 +1,16 @@
-struct Task{
-    id: String,
-    text: String,
-    status: Status
-}
-enum Status{
-    Todo,
-    Doing,
-    Done
-}
+use::std::io;
+mod actions;
+use actions::add_task;
 
 pub fn main(){
-    let tasks: Vec<Task> = Vec::new();
+    let mut commands = String::new();
+    while true {
+        io::stdin()
+            .read_line(&mut commands)
+            .expect("Error");
+        if commands == "add"{
+            add_task();
+        }
+    }
+   
 }
